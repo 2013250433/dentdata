@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title id="titleCheck">CliUM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div ckass="container">
+        <nav class="navbar nav-pills navbar-expand-sm bg-light">
+            <img class="navbar-brand" src="./img/logo.png">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./index.html">메인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./RequestPage.html">틀니의뢰현황</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./TradeManage.html">거래처관리</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./StockManage.html">재고관리</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="signinfors" data-toggle="dropdown" href="#">Sign In</a>
+                        <div class="dropdown-menu" id="forremove" style="width:280px">
+                            <form class="form-inline" action="/action_page.php">
+                                <label for="email" class="mx-auto">ID  :</label>
+                                <input type="email" class="form-control mx-2 logemail1" id="logemail1" placeholder="Enter email" name="logemail1">
+                            </form>
+                            <form class="form-inline" action="/action_page.php">
+                                <label for="pwd" class="mx-auto">PASS  :</label>
+                                <input type="password" class="form-control mx-2 logpwd1" id="logpwd1" placeholder="Enter password" name="logpwd1">
+                            </form>
+                            <form class="form-inline" action="/action_page.php">
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Create New</a>
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Find ID/PASS</a>
+                                <a href="#" type="button" class="btn btn-outline-primary mx-auto loginfors" role="button">Login</a>
+                            </form>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="joinmenu"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="signoutfors"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 ">
+                <img class="card-img-top" src="./img/fristback.png" alt="Card image" style="width:100%">
+                <div class="card-img-overlay">
+                    <h4 class="card-title"><p class="text-white">Clium: Welcome to Denture Logistics Management Blockchain System</p></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 네비게이션 바 시작
+
+
+
+        <div class="container">
+            <div class="w-75 card img-fluid">
+                <img class="card-img-top" src="./img/fristback.png" alt="Card image" style="width:100%">
+                <div class="card-img-overlay">
+                    <h4 class="card-title"><p class="text-white">Clium: Welcome to Denture Logistics Management Blockchain System</p></h4>
+                </div>
+            </div>
+        </div> -->
+    <!--현재 시간을 가져오는 js 파일 -->
+    <script src="./js/time.js"></script>
+    <!--login유무 session js 파일 -->
+    <script src="./js/sessionCheck.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script>
+        var firebaseEmailAuth; //파이어베이스 email 인증 모듈 전역변수
+        var firebaseDatabase; //파이어베이스 db 모듈 전역변수
+        var name; //유저 이름
+        var loginUserKey; //로그인한 유저의 부모 key
+        var userInfo; //로그인한 유저의 정보 object type
+        var comment; //유저가 쓴글 내용 저장
+
+        var config = {
+            apiKey: "AIzaSyBW7PQLFz7-cTpX-V2lmKE5JlqfwfSDCXs",
+            authDomain: "dentwebdata.firebaseapp.com",
+            databaseURL: "https://dentwebdata.firebaseio.com",
+            projectId: "dentwebdata",
+            storageBucket: "dentwebdata.appspot.com",
+            messagingSenderId: "349793546675"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+
+        firebaseEmailAuth = firebase.auth();
+        //데이터베이스 모듈객체 가져오기
+        firebaseDatabase = firebase.database();
+
+        //세션 체크 함수
+        userSessionCheck();
+
+
+
+        $(document).ready(function () {
+
+            //메인화면 감사일기 쓰기버튼 눌렀을 때
+            $(document).on('click', '.loginfors', function () {
+                var email = $('#logemail1').val();
+                var password = $('#logpwd1').val();
+                firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                });   
+            });
+
+        });
+</script>
+
+</body>
+
+</html>

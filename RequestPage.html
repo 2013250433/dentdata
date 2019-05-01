@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title id="titleCheck">CliUM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div ckass="container">
+        <nav class="navbar nav-pills navbar-expand-sm bg-light">
+            <img class="navbar-brand" src="./img/logo.png">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">메인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./RequestPage.html">틀니의뢰현황</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./TradeManage.html">거래처관리</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./StockManage.html">재고관리</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Sign In</a>
+                        <div class="dropdown-menu" style="width:280px">
+                            <form class="form-inline" action="/action_page.php">
+                                <label for="email" class="mx-auto">ID  :</label>
+                                <input type="email" class="form-control mx-2" id="email" placeholder="Enter email" name="email">
+                            </form>
+                            <form class="form-inline" action="/action_page.php">
+                                <label for="pwd" class="mx-auto">PASS  :</label>
+                                <input type="password" class="form-control mx-2" id="pwd" placeholder="Enter password" name="pswd">
+                            </form>
+                            <form class="form-inline" action="/action_page.php">
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Create New</a>
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Find ID/PASS</a>
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Login</a>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row my-row">
+            <div class="col my-col">
+                <br>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col-2">
+                <img class="card-img-top" src="./img/fristback.png" alt="Card image" style="width:100%">
+                <div class="card-img-overlay">
+                    <h4 class="card-title"><p class="text-white">틀니 의뢰 현황</p></h4>
+                </div>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col my-col">
+                <br>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col-2">
+                <p1>부분틀니</p1>
+                <p2>A치과 홍길동(61세) 납기일(2019-06-03)</p2>
+            </div>
+            <div class="col-8">
+                <img src="./img/onfristpic.png" class="rounded" alt="Cinque Terre">
+                <img src="./img/offsecondpic.png" class="rounded" alt="Cinque Terre">
+                <img src="./img/offthirdpic.png" class="rounded" alt="Cinque Terre">
+                <img src="./img/offfourth.png" class="rounded" alt="Cinque Terre">
+                <img src="./img/offlast.png" class="rounded" alt="Cinque Terre">
+            </div>
+            <div class="col-2">
+                <a href="./CreateNewInfo.html" type="button" class="btn btn-danger float-right mx-1" role="button">의뢰 취소</a>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col my-col">
+                <br>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col-2">
+                <p1>완전틀니</p1>
+                <p2>A치과 홍길동(61세) 납기일(2019-06-03)</p2>
+            </div>
+            <div class="col-8">
+                <img src="./img/onfristpic.png" class="rounded" alt="Cinque Terre">
+                <img src="./img/offsecondpic.png" class="rounded" alt="Cinque Terre">
+                <img src="./img/offthirdpic.png" class="rounded" alt="Cinque Terre">
+                <img src="./img/offfourth.png" class="rounded" alt="Cinque Terre">
+                <img src="./img/offlast.png" class="rounded" alt="Cinque Terre">
+            </div>
+            <div class="col-2">
+                <a href="./CreateNewInfo.html" type="button" class="btn btn-danger float-right mx-1" role="button">의뢰 취소</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+    <div class="container">
+        <div class="w-25 card img-fluid">
+            <img class="card-img-top" src="./img/fristback.png" alt="Card image" style="width:100%">
+            <div class="card-img-overlay">
+                <h4 class="card-title"><p class="text-white">틀니의뢰현황</p></h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <p1></p1>
+            <p2></p2>
+        </div>
+        <div class="container">
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <p1></p1>
+            <p2></p2>
+        </div>
+        <div class="container">
+        </div>
+    </div>
+        -->
+</body>
+</html>

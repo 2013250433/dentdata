@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title id="titleCheck">CliUM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  
+<div class="container">
+        <h1>성공적으로 로그아웃되었습니다. 감사합니다</h1>
+    
+    </div>
+ 
+
+  <!--스크립트 부분. 자신의 스크립트 코드로 변경하세요! -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+  <script>
+    var firebaseEmailAuth; //파이어베이스 email 인증 모듈 전역변수
+
+    //파이어 베이스 초기화 코드
+    var config = {
+    apiKey: "AIzaSyBW7PQLFz7-cTpX-V2lmKE5JlqfwfSDCXs",
+    authDomain: "dentwebdata.firebaseapp.com",
+    databaseURL: "https://dentwebdata.firebaseio.com",
+    projectId: "dentwebdata",
+    storageBucket: "dentwebdata.appspot.com",
+    messagingSenderId: "349793546675"
+  };
+  firebase.initializeApp(config);
+    //인증모듈 객체 가져오기
+    firebaseEmailAuth = firebase.auth();
+
+      firebaseEmailAuth.signOut().then(function () {
+                 window.location.href = "./index.html"
+                 
+        }).catch(function(error) {
+        if(error){
+                alert("로그인 실패");
+        }
+});
+
+    </script>    
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    메뉴바~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <div ckass="container">
+        <nav class="navbar nav-pills navbar-expand-sm bg-light">
+            <img class="navbar-brand" src="./img/logo.png">
+        </nav>
+    </div>
+
+    <div ckass="container">
+        <nav class="navbar nav-pills navbar-expand-sm bg-light">
+            <img class="navbar-brand" src="./img/logo.png">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./index.html">메인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./RequestPage.html">틀니의뢰현황</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./TradeManage.html">거래처관리</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./StockManage.html">재고관리</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Sign In</a>
+                        <div class="dropdown-menu" style="width:280px">
+                            <form class="form-inline" action="/action_page.php">
+                                <label for="email" class="mx-auto">ID  :</label>
+                                <input type="email" class="form-control mx-2" id="email" placeholder="Enter email" name="email">
+                            </form>
+                            <form class="form-inline" action="/action_page.php">
+                                <label for="pwd" class="mx-auto">PASS  :</label>
+                                <input type="password" class="form-control mx-2" id="pwd" placeholder="Enter password" name="pswd">
+                            </form>
+                            <form class="form-inline" action="/action_page.php">
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Create New</a>
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Find ID/PASS</a>
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Login</a>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    본문
+    <style>
+        .my-row {
+            border: 1px solid green;
+            margin: 1px
+        }
+
+        .my-col {
+            border: 1px solid red;
+            margin: 1px
+        }
+    </style>
+
+    <div class="container">
+        <div class="row my-row">
+            <div class="col my-col">
+                내용1
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col my-col">
+                내용2
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

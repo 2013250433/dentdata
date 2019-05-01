@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title id="titleCheck">CliUM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div ckass="container">
+        <nav class="navbar nav-pills navbar-expand-sm bg-light">
+            <img class="navbar-brand" src="./img/logo.png">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">메인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./RequestPage.html">틀니의뢰현황</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./TradeManage.html">거래처관리</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./StockManage.html">재고관리</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Sign In</a>
+                        <div class="dropdown-menu" style="width:280px">
+                            <form class="form-inline" action="/action_page.php">
+                                <label for="email" class="mx-auto">ID  :</label>
+                                <input type="email" class="form-control mx-2" id="email" placeholder="Enter email" name="email">
+                            </form>
+                            <form class="form-inline" action="/action_page.php">
+                                <label for="pwd" class="mx-auto">PASS  :</label>
+                                <input type="password" class="form-control mx-2" id="pwd" placeholder="Enter password" name="pswd">
+                            </form>
+                            <form class="form-inline" action="/action_page.php">
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Create New</a>
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Find ID/PASS</a>
+                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Login</a>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row my-row">
+            <div class="row my-row">
+                <div class="col my-col">
+                    <br>
+                </div>
+            </div>
+            <div class="col-2">
+                <img class="card-img-top" src="./img/fristback.png" alt="Card image" style="width:100%">
+                <div class="card-img-overlay">
+                    <h4 class="card-title"><p class="text-white">재고 관리</p></h4>
+                </div>
+            </div>
+            <div class="col-4 ml-auto mt-auto">
+                <a href="./StockManageInsert.html" type="button" class="btn btn-outline-primary mx-auto" role="button">재고 및 사용내역 입력</a>>
+            </div>
+        </div>
+        <div class="row my-row">
+            <div class="col my-col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>상태</th>
+                            <th>거래처명</th>
+                            <th>사업자번호</th>
+                            <th>사업주</th>
+                            <th>지역</th>
+                            <th>전화번호</th>
+                            <th>거래내역</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    Open modal
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">4</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">5</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">6</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">7</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">8</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">9</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+        </ul>
+        <div class="row my-row">
+            <div class="col my-col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <a href="#">
+                            <img src="./img/search.png" />
+                        </a>
+                    </div>
+                    <input type="text" class="form-control" placeholder="검색">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                    Open modal
+                </button>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        부분틀니(홍길동)
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>재료명</th>
+                                <th>Serial</th>
+                                <th>납품업체</th>
+                                <th>사용량</th>
+                                <th>사용단위</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
