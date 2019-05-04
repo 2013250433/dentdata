@@ -109,7 +109,11 @@
             </div>
         </div>
     </div>
+    <script>
+        const web3 = new Web3(Web3.givenProvider || 'ws://localhost:8546', null, {});
+        const web3 = new Web3(Web3.givenProvider || new Web3.providers.WebsocketProvider('ws://localhost:8546'), null, {});
 
+    </script>
 
     <!--
     <div class="container">
