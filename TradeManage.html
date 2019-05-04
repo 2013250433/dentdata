@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>
@@ -17,7 +18,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="./index.html">메인</a>
+                        <a class="nav-link " href="./index.html">메인</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./RequestPage.html">틀니의뢰현황</a>
@@ -29,22 +30,28 @@
                         <a class="nav-link" href="./StockManage.html">재고관리</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Sign In</a>
-                        <div class="dropdown-menu" style="width:280px">
+                        <a class="nav-link dropdown-toggle" id="signinfors" data-toggle="dropdown" href="#">Sign In</a>
+                        <div class="dropdown-menu" id="forremove" style="width:280px">
                             <form class="form-inline" action="/action_page.php">
                                 <label for="email" class="mx-auto">ID  :</label>
-                                <input type="email" class="form-control mx-2" id="email" placeholder="Enter email" name="email">
+                                <input type="email" class="form-control mx-2 logemail1" id="logemail1" placeholder="Enter email" name="logemail1">
                             </form>
                             <form class="form-inline" action="/action_page.php">
                                 <label for="pwd" class="mx-auto">PASS  :</label>
-                                <input type="password" class="form-control mx-2" id="pwd" placeholder="Enter password" name="pswd">
+                                <input type="password" class="form-control mx-2 logpwd1" id="logpwd1" placeholder="Enter password" name="logpwd1">
                             </form>
                             <form class="form-inline" action="/action_page.php">
                                 <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Create New</a>
                                 <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Find ID/PASS</a>
-                                <a href="./CreateNew.html" type="button" class="btn btn-outline-primary mx-auto" role="button">Login</a>
+                                <a href="#" type="button" class="btn btn-outline-primary mx-auto loginfors" role="button">Login</a>
                             </form>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="joinmenu"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="signoutfors"></a>
                     </li>
                 </ul>
             </div>
@@ -67,7 +74,7 @@
         </div>
         <div class="row my-row">
             <div class="col my-col">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr>
                             <th>번호</th>
@@ -80,42 +87,7 @@
                             <th>거래내역</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    Open modal
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="hospitview"></tbody>
                 </table>
             </div>
         </div>
@@ -128,13 +100,15 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    Modal body..
+                    <p id=""></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
                 </div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
                     Open modal
@@ -205,5 +179,120 @@
             </div>
         </div>
     </div>
+
+    <script src="./js/sessionCheck.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script>
+        var firebaseEmailAuth; //파이어베이스 email 인증 모듈 전역변수
+        var firebaseDatabase; //파이어베이스 db 모듈 전역변수
+        var name; //유저 이름
+        var loginUserKey; //로그인한 유저의 부모 key
+        var userInfo; //로그인한 유저의 정보 object type
+        var comment; //유저가 쓴글 내용 저장
+
+        var config = {
+            apiKey: "AIzaSyBW7PQLFz7-cTpX-V2lmKE5JlqfwfSDCXs",
+            authDomain: "dentwebdata.firebaseapp.com",
+            databaseURL: "https://dentwebdata.firebaseio.com",
+            projectId: "dentwebdata",
+            storageBucket: "dentwebdata.appspot.com",
+            messagingSenderId: "349793546675"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+        //세션 체크 함
+        userSessionCheck();
+
+        
+
+        
+
+
+        $(document).ready(function () {
+            $(document).on('click', '.loginfors', function () {
+                var email = $('#logemail1').val();
+                var password = $('#logpwd1').val();
+                firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                });
+            });
+
+        });
+
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                //조회 - 데이터 베이스에 저장된 닉네임을 현재 접속되어 있는 user의 pk key 값을 이용해서 가져오기
+                database.ref("users/" + user.uid + "/hospit").once('value').then(function (snapshot) {
+                    var listone = Object.getOwnPropertyNames(snapshot.val());
+                    for (i = 0; i < listone.length; i++) {
+                        var nameoflist = listone[i];
+                        database.ref("users/" + user.uid + "/hospit/" + nameoflist).once('value').then(function (snapshot) {
+                            var dataSet = [snapshot.child("hospittradestatus").val(), snapshot.child("hospitname").val(), snapshot.child("hospitcmpynum").val(), snapshot.child("hospitprname").val(), snapshot.child("hospitpaddress").val(), snapshot.child("hospitphonenum").val(), snapshot.child("hospitphonenum").val()]
+                            
+                        });
+                    }
+                });
+            } else {
+            }
+        });
+        console.log(dataSet);
+        $('#myTable').DataTable({
+            data: dataSet,
+                                
+                                columns: [
+                                    {번호: "hospitphonenum"},
+                                    {상태: "hospittradestatus"},
+                                    {거래처명: "hospitname"},
+                                    {사업자번호: "hospitcmpynum"},
+                                    {사업주: "hospitprname"},
+                                    {지역: "hospitpaddress"},
+                                    {전화번호:"hospitphonenum"},
+                                ]
+                            });
+
+
+    </script>
+    <!--
+         var list = Object.getOwnPropertyNames(snapshot.val());
+                    var a = list[3];
+
+        snapshot.val()[a]
+        document.getElementById("Ahostrdstatus").innerText = b.age;
+
+
+        var tablein ='<tr>' +
+                            '<td>' +  (i + 1) +'</td> ' +
+                            '<td>' + snapshot.val().hopittradestatus +'</td>' +
+                            '<td>' +  snapshot.val().hopitname+ '</td>' +
+                            '<td>' +  snapshot.val().hopitcmpynum +'</td>' +
+                            '<td>' +  snapshot.val().hopitprname +'</td>' +
+                            '<td>' +  snapshot.val().hopitaddresss+ '</td>' +
+                            '<td>' +  snapshot.val().hopitphonenum +'</td>' +
+                            '</tr>';
+                        var k = k + tablein;
+                        document.getElementById("hospitview").innerHTML= k;
+
+
+         database.ref("users/" + user.uid + "/Bhospit").once('value').then(function (snapshot) {
+                    document.getElementById("Bhostrdstatus").innerText = snapshot.val().hospittradestatus;
+                    document.getElementById("Bhosname").innerText = snapshot.val().hospitname;
+                    document.getElementById("Bhoscmpynum").innerText = snapshot.val().hospitcmpynum;
+                    document.getElementById("Bhosprname").innerText = snapshot.val().hospitprname;
+                    document.getElementById("Bhosaddress").innerText = snapshot.val().hospitaddress;
+                    document.getElementById("Bhosphonenum").innerText = snapshot.val().hospitphonenum;
+                });
+                database.ref("users/" + user.uid + "/Chospit").once('value').then(function (snapshot) {
+                    document.getElementById("Chostrdstatus").innerText = snapshot.val().hospittradestatus;
+                    document.getElementById("Chosname").innerText = snapshot.val().hospitname;
+                    document.getElementById("Choscmpynum").innerText = snapshot.val().hospitcmpynum;
+                    document.getElementById("Chosprname").innerText = snapshot.val().hospitprname;
+                    document.getElementById("Chosaddress").innerText = snapshot.val().hospitaddress;
+                    document.getElementById("Chosphonenum").innerText = snapshot.val().hospitphonenum;
+                });
+        -->
 </body>
 </html>

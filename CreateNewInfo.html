@@ -89,7 +89,7 @@
             var database = firebase.database();
 
             //버튼기능
-            $(document).ready(function(){
+            $(document).ready(function () {
                 $(document).on('click', '.join', function () {
                     var id = $('#id').val();
                     var email = $('#email').val();
@@ -106,23 +106,74 @@
                         hospitcmpynum: '198362',
                         hospitprname: '홍길동',
                         hospitaddress: '서울 성북구 인촌로 73',
-                        hospitphonenum: '15770083',
-                        hospittradestatus: '1',
+                        hospitphonenum: '1577-0083',
+                        hospittradestatus: '거래중',
                     };
                     var Ahospitcustumer = {
                         age: '52',
                         name: '이한실',
-                        duedate: '20190812',
+                        duedate: '20191206',
                         shipmentstatus: '3',
+                        dentinfo: '완전틀니',
+                        dentcost: '2,000,000',
                     };
-                    var Bcompany = {
+                    var Acompany = {
                         companyname: 'A기업',
                         companycmpynum: '192732',
                         companyprname: '이민규',
-                        companyaddress: '서울 성북고 안암로 31',
+                        companyaddress: '서울 송파구 순환로 32',
                         companyphonenum: '02-953-1853',
                     };
-                    
+
+
+                    var Bhospit = {
+                        hospitname: '서울대학교병원',
+                        hospitcmpynum: '648512',
+                        hospitprname: '한윤주',
+                        hospitaddress: '서울 종로구 대학로 101',
+                        hospitphonenum: '1588-5700',
+                        hospittradestatus: '거래중',
+                    };
+                    var Bhospitcustumer = {
+                        age: '49',
+                        name: '문찬솔',
+                        duedate: '20191101',
+                        shipmentstatus: '4',
+                        dentinfo: '부분틀니',
+                        dentcost: '1,700,000',
+                    };
+                    var Bcompany = {
+                        companyname: 'B기업',
+                        companycmpynum: '095435',
+                        companyprname: '김영희',
+                        companyaddress: '서울 강남구 경희로 231',
+                        companyphonenum: '02-942-8649',
+                    };
+
+
+                    var Chospit = {
+                        hospitname: '세브란스병원',
+                        hospitcmpynum: '465986',
+                        hospitprname: '김철수',
+                        hospitaddress: '서울 서대문구 연세로 50',
+                        hospitphonenum: '1599-1004',
+                        hospittradestatus: '거래완료',
+                    };
+                    var Chospitcustumer = {
+                        age: '39',
+                        name: '박소연',
+                        duedate: '20190921',
+                        shipmentstatus: '5',
+                        dentinfo: '완전틀니',
+                        dentcost: '1,500,000',
+                    };
+                    var Ccompany = {
+                        companyname: 'C기업',
+                        companycmpynum: '375965',
+                        companyprname: '김민지',
+                        companyaddress: '서울 서초구 남부순환로 23',
+                        companyphonenum: '02-953-8574',
+                    };
 
 
                     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
@@ -137,13 +188,21 @@
                                 useremail: email,
                                 userphone: phone,
                                 name: name,
-                                useraddress: address1+address2,
+                                useraddress: address1 + address2,
                                 userkey: user.uid,
                             };
                             firebase.database().ref('users/' + user.uid).update(obj);
-                            firebase.database().ref('users/' + user.uid + '/Ahospit').update(Ahospit);
-                            firebase.database().ref('users/' + user.uid + '/Ahospit/Ahospitcustumer').update(Ahospitcustumer);
-                            firebase.database().ref('users/' + user.uid + '/Bcompany').update(Bcompany);
+                            firebase.database().ref('users/' + user.uid + '/hospit/Ahospit').update(Ahospit);
+                            firebase.database().ref('users/' + user.uid + '/hospit/Ahospit/Ahospitcustumer').update(Ahospitcustumer);
+                            firebase.database().ref('users/' + user.uid + '/company/Acompany').update(Acompany);
+                            
+                            firebase.database().ref('users/' + user.uid + '/hospit/Bhospit').update(Bhospit);
+                            firebase.database().ref('users/' + user.uid + '/hospit/Bhospit/Ahospitcustumer').update(Bhospitcustumer);
+                            firebase.database().ref('users/' + user.uid + '/company/Bcompany').update(Bcompany);
+                            
+                            firebase.database().ref('users/' + user.uid + '/hospit/Chospit').update(Chospit);
+                            firebase.database().ref('users/' + user.uid + '/hospit/Chospit/Ahospitcustumer').update(Chospitcustumer);
+                            firebase.database().ref('users/' + user.uid + '/company/Ccompany').update(Ccompany);
 
                             alert("가입성공");
                             firebase.auth().signOut()
@@ -165,18 +224,18 @@
 
 
         <!--
-     <form class="form-inline" action="/action_page.php">
+         <form class="form-inline" action="/action_page.php">
 
-     </form>
-     <form class="form-inline" action="/action_page.php">
-     </form>
-     <form class="form-inline" action="/action_page.php">
-     </form>
-     <form class="form-inline" action="/action_page.php">
-     </form>
-         <button type="button" class="btn btn-primary float-right mx-1">다음</button>
-         <button type="button" class="btn btn-primary float-right mx-1">뒤로</button>
-    -->
+         </form>
+         <form class="form-inline" action="/action_page.php">
+         </form>
+         <form class="form-inline" action="/action_page.php">
+         </form>
+         <form class="form-inline" action="/action_page.php">
+         </form>
+             <button type="button" class="btn btn-primary float-right mx-1">다음</button>
+             <button type="button" class="btn btn-primary float-right mx-1">뒤로</button>
+        -->
 
 </body>
 </html>
