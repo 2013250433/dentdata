@@ -57,7 +57,6 @@
             </div>
         </nav>
     </div>
-
     <div class="container">
         <div class="row my-row">
             <div class="col-2">
@@ -72,12 +71,12 @@
                 <br>
             </div>
         </div>
+
         <div class="row my-row">
             <div class="col my-col">
                 <table class="table" id="myTable">
                     <thead>
                         <tr>
-                            <th>번호</th>
                             <th>상태</th>
                             <th>거래처명</th>
                             <th>사업자번호</th>
@@ -94,91 +93,96 @@
     </div>
 
     <!-- The Modal -->
-    <div class="modal" id="myModal">
+    <div class="modal" id="Modalone">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
+                    <p>A치과 거래내역</p>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <p id=""></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="row">
+                                    <p1>부분틀니(홍길동)</p1>
+                                </div>
+                                <div class="row">
+                                    <p2>-금액:1,500,000원(2018-09-08)</p2>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal2"> Open modal</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="row">
+                                    <p1>부분틀니(홍길동)</p1>
+                                </div>
+                                <div class="row">
+                                    <p2>-금액:1,500,000원(2018-09-08)</p2>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal2"> Open modal</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal2">
+                    Open modal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="Modal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4>A치과 거래내역</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <p1>부분틀니(홍길동)</p1>
+                        </div>
+                        <div class="row">
+                            <div class="row my-row">
+                                <div class="col my-col">
+                                    <table class="table" id="myTable">
+                                        <thead>
+                                            <tr>
+                                                <th>재료명</th>
+                                                <th>Serial</th>
+                                                <th>납품업체</th>
+                                                <th>사용량</th>
+                                                <th>사용단위</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="customerview"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
                     Open modal
                 </button>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
             </div>
         </div>
     </div>
 
-    <div class="modal" id="myModal2">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">
-                        부분틀니(홍길동)
-                    </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>재료명</th>
-                                <th>Serial</th>
-                                <th>납품업체</th>
-                                <th>사용량</th>
-                                <th>사용단위</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <script src="./js/sessionCheck.js"></script>
 
@@ -204,9 +208,9 @@
         //세션 체크 함
         userSessionCheck();
 
-        
 
-        
+
+
 
 
         $(document).ready(function () {
@@ -221,8 +225,8 @@
             });
 
         });
-
-
+        var a = 1;
+        var dataSet = []
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 //조회 - 데이터 베이스에 저장된 닉네임을 현재 접속되어 있는 user의 pk key 값을 이용해서 가져오기
@@ -231,37 +235,47 @@
                     for (i = 0; i < listone.length; i++) {
                         var nameoflist = listone[i];
                         database.ref("users/" + user.uid + "/hospit/" + nameoflist).once('value').then(function (snapshot) {
-                            var dataSet = [snapshot.child("hospittradestatus").val(), snapshot.child("hospitname").val(), snapshot.child("hospitcmpynum").val(), snapshot.child("hospitprname").val(), snapshot.child("hospitpaddress").val(), snapshot.child("hospitphonenum").val(), snapshot.child("hospitphonenum").val()]
-                            
+                            b = [snapshot.child("hospittradestatus").val(), snapshot.child("hospitname").val(), snapshot.child("hospitcmpynum").val(), snapshot.child("hospitprname").val(), snapshot.child("hospitpaddress").val(), snapshot.child("hospitphonenum").val(), snapshot.child("hospitphonenum").val()];
+                            var main =
+                                "<tr>" +
+                                "<td>" + snapshot.child("hospittradestatus").val() + "</td>" +
+                                "<td>" + snapshot.child("hospitname").val() + "</td>" +
+                                "<td>" + snapshot.child("hospitcmpynum").val() + "</td>" +
+                                "<td>" + snapshot.child("hospitprname").val() + "</td>" +
+                                "<td>" + snapshot.child("hospitaddress").val() + "</td>" +
+                                "<td>" + snapshot.child("hospitphonenum").val() + "</td>" +
+                                "<td>" + '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modalone"> Open modal</button>' + "</td>" +
+                                "</tr>";
+                            document.getElementById("hospitview").innerHTML += main;
+                            //var modal = "<text>ashdifhiqwneisdva </text>";
+                            //document.body.innerHTML += modal;
                         });
                     }
                 });
             } else {
             }
         });
-        console.log(dataSet);
-        $('#myTable').DataTable({
-            data: dataSet,
-                                
-                                columns: [
-                                    {번호: "hospitphonenum"},
-                                    {상태: "hospittradestatus"},
-                                    {거래처명: "hospitname"},
-                                    {사업자번호: "hospitcmpynum"},
-                                    {사업주: "hospitprname"},
-                                    {지역: "hospitpaddress"},
-                                    {전화번호:"hospitphonenum"},
-                                ]
-                            });
+
+
 
 
     </script>
     <!--
-         var list = Object.getOwnPropertyNames(snapshot.val());
-                    var a = list[3];
+        $('#myTable').DataTable({
+            data: dataSet,
 
-        snapshot.val()[a]
-        document.getElementById("Ahostrdstatus").innerText = b.age;
+            columns: [
+                { 번호: "hospitphonenum" },
+                { 상태: "hospittradestatus" },
+                { 거래처명: "hospitname" },
+                { 사업자번호: "hospitcmpynum" },
+                { 사업주: "hospitprname" },
+                { 지역: "hospitpaddress" },
+                { 전화번호: "hospitphonenum" },
+            ]
+        });
+
+
 
 
         var tablein ='<tr>' +
@@ -277,22 +291,13 @@
                         document.getElementById("hospitview").innerHTML= k;
 
 
-         database.ref("users/" + user.uid + "/Bhospit").once('value').then(function (snapshot) {
-                    document.getElementById("Bhostrdstatus").innerText = snapshot.val().hospittradestatus;
-                    document.getElementById("Bhosname").innerText = snapshot.val().hospitname;
-                    document.getElementById("Bhoscmpynum").innerText = snapshot.val().hospitcmpynum;
-                    document.getElementById("Bhosprname").innerText = snapshot.val().hospitprname;
-                    document.getElementById("Bhosaddress").innerText = snapshot.val().hospitaddress;
-                    document.getElementById("Bhosphonenum").innerText = snapshot.val().hospitphonenum;
-                });
-                database.ref("users/" + user.uid + "/Chospit").once('value').then(function (snapshot) {
-                    document.getElementById("Chostrdstatus").innerText = snapshot.val().hospittradestatus;
-                    document.getElementById("Chosname").innerText = snapshot.val().hospitname;
-                    document.getElementById("Choscmpynum").innerText = snapshot.val().hospitcmpynum;
-                    document.getElementById("Chosprname").innerText = snapshot.val().hospitprname;
-                    document.getElementById("Chosaddress").innerText = snapshot.val().hospitaddress;
-                    document.getElementById("Chosphonenum").innerText = snapshot.val().hospitphonenum;
-                });
+
+
+
         -->
+    <!-- Modal footer
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>-->
 </body>
 </html>
