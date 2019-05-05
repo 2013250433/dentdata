@@ -9,111 +9,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+	<script src="./web3js/web3setting.js"></script>
 </head>
 
 <body>
-	<script>
-		var abiArray = [
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getSecond",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getFirst",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "toggle1",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getThrid",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "toggle3",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "toggle2",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"name": "oN",
-				"type": "string"
-			},
-			{
-				"name": "cN",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	}
-];
-	</script>
-	<script>
-		if(typeof web3 !== 'undefined'){
-			web3 = new Web3(web3.currentProvider);
-			console.log(web3.currentProvider);
-		} else {
-			web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io"));
-			console.log(web3.currentProvider);
-		}
-		
-		var MyContract = web3.eth.contract(abiArray);
-		var address = "0x356534059f5e767a7fc5d5edbdadcc2aa9f7d010";
-		var contractInst = MyContract.at(address);
-		
-	</script>
+
 	
     <div ckass="container">
         <nav class="navbar nav-pills navbar-expand-sm bg-light">
@@ -180,11 +80,11 @@
                 <p2>A치과 홍길동(61세) 납기일(2019-06-03)</p2>
             </div>
             <div class="col-8">
-                <img id="frfb" src="./img/offfirst.png" class="rounded" alt="Cinque Terre">
-                <img id="frsb" src="./img/offsecondpic.png" class="rounded" alt="Cinque Terre">
-                <img src="./img/offthirdpic.png" class="rounded" alt="Cinque Terre">
-                <img src="./img/offfourth.png" class="rounded" alt="Cinque Terre">
-                <img src="./img/offlast.png" class="rounded" alt="Cinque Terre">
+                <img id="fr1b" src="./img/offfirst.png" class="rounded" alt="Cinque Terre">
+                <img id="fr2b" src="./img/offsecondpic.png" class="rounded" alt="Cinque Terre">
+                <img id="fr3b" src="./img/offthirdpic.png" class="rounded" alt="Cinque Terre">
+                <img id="fr4b" src="./img/offfourth.png" class="rounded" alt="Cinque Terre">
+                <img id="fr5b" src="./img/offlast.png" class="rounded" alt="Cinque Terre">
             </div>
             <div class="col-2">
                 <a href="./CreateNewInfo.html" type="button" class="btn btn-danger float-right mx-1" role="button">의뢰 취소</a>
@@ -215,11 +115,44 @@
 	<script>
 		contractInst.getFirst(function(err,res){
 			if(res){
-				$("#frfb").attr('src','./img/onfristpic.png');
+				$("#fr1b").attr('src','./img/onfristpic.png');
 			} else {
-				$("#frfb").attr('src','./img/offfirst.png');
+				$("#fr1b").attr('src','./img/offfirst.png');
 			}
 		})
+		
+		contractInst.getSecond(function(err,res){
+			if(res){
+				$("#fr2b").attr('src','./img/onfristpic.png');
+			} else {
+				$("#fr2b").attr('src','./img/offfirst.png');
+			}
+		})
+		
+		contractInst.getThird(function(err,res){
+			if(res){
+				$("#fr3b").attr('src','./img/onfristpic.png');
+			} else {
+				$("#fr3b").attr('src','./img/offfirst.png');
+			}
+		})
+		
+		contractInst.getFourth(function(err,res){
+			if(res){
+				$("#fr4b").attr('src','./img/onfristpic.png');
+			} else {
+				$("#fr4b").attr('src','./img/offfirst.png');
+			}
+		})
+		
+		contractInst.getFifth(function(err,res){
+			if(res){
+				$("#fr5b").attr('src','./img/onfristpic.png');
+			} else {
+				$("#fr5b").attr('src','./img/offfirst.png');
+			}
+		})
+		
 		
 		$("#frfb").click(function(){
 			contractInst.getFirst(function(err,res){
