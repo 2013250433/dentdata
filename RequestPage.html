@@ -81,10 +81,10 @@
             </div>
             <div class="col-8">
                 <img id="fr1b" src="./img/offfirst.png" class="rounded" alt="Cinque Terre">
-                <img id="fr2b" src="./img/offsecondpic.png" class="rounded" alt="Cinque Terre">
-                <img id="fr3b" src="./img/offthirdpic.png" class="rounded" alt="Cinque Terre">
-                <img id="fr4b" src="./img/offfourth.png" class="rounded" alt="Cinque Terre">
-                <img id="fr5b" src="./img/offlast.png" class="rounded" alt="Cinque Terre">
+                <img id="fr2b" src="./img/offsecondpic.png" width="106" height="107" class="rounded" alt="Cinque Terre">
+                <img id="fr3b" src="./img/offthirdpic.png" width="106" height="107" class="rounded" alt="Cinque Terre">
+                <img id="fr4b" src="./img/offfourth.png" width="106" height="107" class="rounded" alt="Cinque Terre">
+                <img id="fr5b" src="./img/offlast.png" width="106" height="107" class="rounded" alt="Cinque Terre">
             </div>
             <div class="col-2">
                 <a href="./CreateNewInfo.html" type="button" class="btn btn-danger float-right mx-1" role="button">의뢰 취소</a>
@@ -113,14 +113,42 @@
         </div>
     </div>
 	<script>
-	
+		//window.setTimeout('window.location.reload()',10000); // reload after 10 sec
+		
 		$("#fr1b").click(function(){
-			contractInst.getFirst(function(err,res){
-				if(res){
-					alert("true");
-				} else {
-					alert("false");
-				}
+			contractInst.toggle1(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+				console.log(res);
+			})
+		})
+		
+		$("#fr2b").click(function(){
+			contractInst.toggle2(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+				console.log(res);
+			})
+		})
+		
+		$("#fr3b").click(function(){
+			contractInst.toggle3(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+			})
+		})
+		
+		$("#fr4b").click(function(){
+			contractInst.toggle4(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+			})
+		})
+		
+		$("#fr5b").click(function(){
+			contractInst.toggle5(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
 			})
 		})
 		
@@ -140,7 +168,7 @@
 			}
 		})
 		
-		contractInst.getThrid(function(err,res){
+		contractInst.getThird(function(err,res){
 			if(res){
 				$("#fr3b").attr('src','./img/onthirdpic.png');
 			} else {
@@ -164,8 +192,6 @@
 			}
 		})
 		
-		
-
 	</script>
 
     <!--
