@@ -101,11 +101,11 @@
                 <p2>A치과 홍길동(61세) 납기일(2019-06-03)</p2>
             </div>
             <div class="col-8">
-                <img src="./img/offfirst.png" class="rounded" alt="Cinque Terre">
-                <img src="./img/offsecondpic.png" class="rounded" alt="Cinque Terre">
-                <img src="./img/offthirdpic.png" class="rounded" alt="Cinque Terre">
-                <img src="./img/offfourth.png" class="rounded" alt="Cinque Terre">
-                <img src="./img/offlast.png" class="rounded" alt="Cinque Terre">
+                <img id="sr1b" src="./img/offfirst.png" class="rounded" alt="Cinque Terre">
+                <img id="sr2b" src="./img/offsecondpic.png" class="rounded" alt="Cinque Terre">
+                <img id="sr3b" src="./img/offthirdpic.png" class="rounded" alt="Cinque Terre">
+                <img id="sr4b" src="./img/offfourth.png" class="rounded" alt="Cinque Terre">
+                <img id="sr5b" src="./img/offlast.png" class="rounded" alt="Cinque Terre">
             </div>
             <div class="col-2">
                 <a href="./CreateNewInfo.html" type="button" class="btn btn-danger float-right mx-1" role="button">의뢰 취소</a>
@@ -113,6 +113,17 @@
         </div>
     </div>
 	<script>
+	
+		$("#fr1b").click(function(){
+			contractInst.getFirst(function(err,res){
+				if(res){
+					alert("true");
+				} else {
+					alert("false");
+				}
+			})
+		})
+		
 		contractInst.getFirst(function(err,res){
 			if(res){
 				$("#fr1b").attr('src','./img/onfristpic.png');
@@ -123,46 +134,38 @@
 		
 		contractInst.getSecond(function(err,res){
 			if(res){
-				$("#fr2b").attr('src','./img/onfristpic.png');
+				$("#fr2b").attr('src','./img/onsecondpic.png');
 			} else {
-				$("#fr2b").attr('src','./img/offfirst.png');
+				$("#fr2b").attr('src','./img/offsecondpic.png');
 			}
 		})
 		
-		contractInst.getThird(function(err,res){
+		contractInst.getThrid(function(err,res){
 			if(res){
-				$("#fr3b").attr('src','./img/onfristpic.png');
+				$("#fr3b").attr('src','./img/onthirdpic.png');
 			} else {
-				$("#fr3b").attr('src','./img/offfirst.png');
+				$("#fr3b").attr('src','./img/offthirdpic.png');
 			}
 		})
 		
 		contractInst.getFourth(function(err,res){
 			if(res){
-				$("#fr4b").attr('src','./img/onfristpic.png');
+				$("#fr4b").attr('src','./img/onfourthpic.png');
 			} else {
-				$("#fr4b").attr('src','./img/offfirst.png');
+				$("#fr4b").attr('src','./img/offfourth.png');
 			}
 		})
 		
 		contractInst.getFifth(function(err,res){
 			if(res){
-				$("#fr5b").attr('src','./img/onfristpic.png');
+				$("#fr5b").attr('src','./img/onlastpic.png');
 			} else {
-				$("#fr5b").attr('src','./img/offfirst.png');
+				$("#fr5b").attr('src','./img/offlast.png');
 			}
 		})
 		
 		
-		$("#frfb").click(function(){
-			contractInst.getFirst(function(err,res){
-				if(res){
-					alert("true");
-				} else {
-					alert("false");
-				}
-			})
-		})
+
 	</script>
 
     <!--

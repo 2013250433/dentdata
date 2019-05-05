@@ -1,4 +1,3 @@
-alert('hi');
 		var abiArray = [
 	{
 		"constant": true,

@@ -1,0 +1,5 @@
+onfristpic		offfirst
+onsecondpic	offsecondpic
+onthirdpic	offthirdpic
+onfourthpic	offfourth
+onlastpic		offlast
