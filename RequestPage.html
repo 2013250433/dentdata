@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
 	<script src="./web3js/web3setting.js"></script>
+	
 </head>
 
 <body>
@@ -102,10 +103,10 @@
             </div>
             <div class="col-8">
                 <img id="sr1b" src="./img/offfirst.png" class="rounded" alt="Cinque Terre">
-                <img id="sr2b" src="./img/offsecondpic.png" class="rounded" alt="Cinque Terre">
-                <img id="sr3b" src="./img/offthirdpic.png" class="rounded" alt="Cinque Terre">
-                <img id="sr4b" src="./img/offfourth.png" class="rounded" alt="Cinque Terre">
-                <img id="sr5b" src="./img/offlast.png" class="rounded" alt="Cinque Terre">
+                <img id="sr2b" src="./img/offsecondpic.png" width="106" height="107" class="rounded" alt="Cinque Terre">
+                <img id="sr3b" src="./img/offthirdpic.png" width="106" height="107" class="rounded" alt="Cinque Terre">
+                <img id="sr4b" src="./img/offfourth.png" width="106" height="107" class="rounded" alt="Cinque Terre">
+                <img id="sr5b" src="./img/offlast.png" width="106" height="107" class="rounded" alt="Cinque Terre">
             </div>
             <div class="col-2">
                 <a href="./CreateNewInfo.html" type="button" class="btn btn-danger float-right mx-1" role="button">의뢰 취소</a>
@@ -191,9 +192,85 @@
 				$("#fr5b").attr('src','./img/offlast.png');
 			}
 		})
-		
 	</script>
-
+	<script>
+		$("#sr1b").click(function(){
+			contractInst2.toggle1(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+				console.log(res);
+			})
+		})
+		
+		$("#sr2b").click(function(){
+			contractInst2.toggle2(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+				console.log(res);
+			})
+		})
+		
+		$("#sr3b").click(function(){
+			contractInst2.toggle3(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+			})
+		})
+		
+		$("#sr4b").click(function(){
+			contractInst2.toggle4(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+			})
+		})
+		
+		$("#sr5b").click(function(){
+			contractInst2.toggle5(function(err,res){
+				if(res.length==66)
+					alert('트랜잭션이 confirmed된 후에 F5나 새로고침을 눌러주세요!')
+			})
+		})
+		
+		contractInst2.getFirst(function(err,res){
+			if(res){
+				$("#sr1b").attr('src','./img/onfristpic.png');
+			} else {
+				$("#sr1b").attr('src','./img/offfirst.png');
+			}
+		})
+		
+		contractInst2.getSecond(function(err,res){
+			if(res){
+				$("#sr2b").attr('src','./img/onsecondpic.png');
+			} else {
+				$("#sr2b").attr('src','./img/offsecondpic.png');
+			}
+		})
+		
+		contractInst2.getThird(function(err,res){
+			if(res){
+				$("#sr3b").attr('src','./img/onthirdpic.png');
+			} else {
+				$("#sr3b").attr('src','./img/offthirdpic.png');
+			}
+		})
+		
+		contractInst2.getFourth(function(err,res){
+			if(res){
+				$("#sr4b").attr('src','./img/onfourthpic.png');
+			} else {
+				$("#sr4b").attr('src','./img/offfourth.png');
+			}
+		})
+		
+		contractInst2.getFifth(function(err,res){
+			if(res){
+				$("#sr5b").attr('src','./img/onlastpic.png');
+			} else {
+				$("#sr5b").attr('src','./img/offlast.png');
+			}
+		})
+	</script>
     <!--
     <div class="container">
         <div class="w-25 card img-fluid">

@@ -142,3 +142,6 @@
 		var MyContract = web3.eth.contract(abiArray);
 		var address = "0x0727d35f7ac49fe4d42e410c74dc2a8b62440e52";
 		var contractInst = MyContract.at(address);
+		var address2 = "0x6e032b7dc103a86776749b152d1ac38b7d371578";
+		var contractInst2 = MyContract.at(address2);
+		
